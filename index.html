@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official Maafi-Nama for Meri Kaju Barfi 💖</title>
+    <!-- Tailwind CSS for responsive layout & utility styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Dancing Script for romantic headings & Poppins for clean readable text -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom Fonts & Base Aesthetics */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at top left, #2d142c, #1a0b1c 50%, #0f0510 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #fff;
+        }
+
+        .font-romantic {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* Floating Background Hearts & Sparkles */
+        .floating-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatUp linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(105vh) scale(0.6) rotate(0deg);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.7;
+            }
+            85% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.2) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Glowing Card & Envelope Animations */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 182, 193, 0.25);
+            box-shadow: 0 20px 50px rgba(236, 72, 153, 0.2);
+        }
+
+        .pulse-glow {
+            animation: pulseGlow 2.5s infinite ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(244, 63, 94, 0.4), 0 0 40px rgba(236, 72, 153, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 35px rgba(244, 63, 94, 0.75), 0 0 60px rgba(236, 72, 153, 0.45);
+            }
+        }
+
+        /* Envelope Seal Animation */
+        .wax-seal {
+            background: linear-gradient(135deg, #f43f5e, #be123c);
+            box-shadow: 0 4px 15px rgba(244, 63, 94, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .wax-seal:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Smooth Fade In Transition */
+        .fade-in-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Playful Dodging Button Transition */
+        #angry-btn {
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        /* Celebration Heart Burst */
+        .burst-heart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 50;
+            font-size: 1.5rem;
+            animation: burstOut 1.8s ease-out forwards;
+        }
+
+        @keyframes burstOut {
+            0% {
+                transform: translate(0, 0) scale(0.5);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(1.4) rotate(var(--rot));
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-4 sm:p-6 relative selection:bg-pink-500 selection:text-white">
+
+    <!-- Background Floating Hearts Container -->
+    <div id="particles-container" aria-hidden="true"></div>
+
+    <!-- Main Content Container -->
+    <main class="w-full max-w-md z-10 my-auto">
+
+        <!-- STAGE 1: Sealed Interactive Envelope -->
+        <section id="envelope-stage" class="glass-card rounded-3xl p-8 text-center pulse-glow transition-all duration-500">
+            <div class="mb-4 inline-block px-4 py-1.5 rounded-full bg-pink-500/20 border border-pink-400/30 text-pink-200 text-xs tracking-wider uppercase font-medium">
+                Special Delivery 💌
+            </div>
+
+            <!-- Cute Animated Envelope Graphic (Inline SVG) -->
+            <div class="relative w-36 h-28 mx-auto my-6 flex items-center justify-center">
+                <svg viewBox="0 0 200 150" class="w-full h-full drop-shadow-xl">
+                    <!-- Envelope Body -->
+                    <rect x="10" y="20" width="180" height="115" rx="16" fill="#fff1f2" stroke="#fda4af" stroke-width="3"/>
+                    <!-- Bottom Flap -->
+                    <path d="M12 132 L100 72 L188 132" fill="#ffe4e6" stroke="#fda4af" stroke-width="2"/>
+                    <!-- Top Flap -->
+                    <path d="M12 24 L100 88 L188 24" fill="#fecdd3" stroke="#fb7185" stroke-width="2"/>
+                </svg>
+                <!-- Interactive Wax Seal -->
+                <button onclick="openLetter()" aria-label="Open Letter" class="wax-seal absolute w-14 h-14 rounded-full flex items-center justify-center text-2xl cursor-pointer border-2 border-pink-200">
+                    💖
+                </button>
+            </div>
+
+            <h1 class="font-romantic text-4xl sm:text-5xl text-pink-300 font-bold mb-2">
+                For Meri Kaju Barfi 💖
+            </h1>
+            <p class="text-pink-100/80 text-sm mb-8 leading-relaxed">
+                Ek masoom ladke ki taraf se ek chota sa dil ka paigham...
+            </p>
+
+            <button onclick="openLetter()" class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-rose-500 via-pink-500 to-rose-500 hover:from-rose-600 hover:to-pink-600 text-white font-semibold text-base shadow-lg shadow-pink-500/30 transform active:scale-95 transition-all cursor-pointer">
+                Tap to Open My Heart 💌
+            </button>
+        </section>
+
+        <!-- STAGE 2: The Apology Application Letter -->
+        <section id="letter-stage" class="hidden glass-card rounded-3xl p-6 sm:p-8 fade-in-up">
+            <!-- Header Badge -->
+            <div class="flex items-center justify-between border-b border-pink-300/20 pb-4 mb-5">
+                <div>
+                    <span class="text-xs text-pink-300 uppercase tracking-widest font-semibold block">To: The Queen of My Heart</span>
+                    <h2 class="font-romantic text-3xl sm:text-4xl text-white font-bold mt-0.5">
+                        Official Maafi-Nama 🙏😅
+                    </h2>
+                </div>
+                <div class="text-3xl animate-bounce">🥺</div>
+            </div>
+
+            <!-- Letter Body -->
+            <div class="space-y-3.5 text-pink-50/90 text-sm sm:text-base leading-relaxed">
+                <p class="font-medium text-pink-200">
+                    Respected Madam (Meri Pyari Kaju Barfi),
+                </p>
+                <p>
+                    Bade hi adab aur thodi si sharmindagi ke saath yeh arz karna chahta hoon ki pichli baar mazak-mazak mein meri zubaan thodi zyada hi phisal gayi thi. Aapne jab masti mein mana kiya, toh maine bina soche-samjhe woh behuda sa joke maar diya.
+                </p>
+                <p>
+                    Sach kahoon toh uske baad se mujhe khud par bada bura feel ho raha hai. Ek aisa ladka jiske paas duniya ki sabse khoobsurat aur khaas <span class="text-pink-300 font-semibold">Kaju Barfi</span> ho, woh kisi aur ke baare mein mazak mein bhi kaise bol sakta hai! Meri aankhein aur mera dil toh sirf aap par hi tika hai. ❤️
+                </p>
+
+                <!-- Cute Promise Box -->
+                <div class="bg-pink-950/50 border border-pink-400/25 rounded-2xl p-4 my-4">
+                    <p class="text-xs uppercase tracking-wider text-pink-300 font-semibold mb-2">
+                        Meri Choti Si Guzarish:
+                    </p>
+                    <ul class="space-y-1.5 text-xs sm:text-sm text-pink-100">
+                        <li>✨ Us bekaar se joke ko mere <em>"brain ka temporary error"</em> samajh kar delete kar dein.</li>
+                        <li>✨ Apna woh cute sa gussa (nak fulana) chhod kar mujhe maaf kar dein.</li>
+                    </ul>
+                </div>
+
+                <p class="text-sm italic text-pink-200/90">
+                    Promise karta hoon aage se aisi koi awkward baat nahi bolunga. Bas jaldi se muskuraiye, kyunki aapka yeh Krishna sirf aur sirf aapka hi hai! 🥰
+                </p>
+
+                <div class="pt-2 text-right">
+                    <p class="text-xs text-pink-300">Aapka apna (thoda sa buddhu, par sirf aapka),</p>
+                    <p class="font-romantic text-2xl text-pink-200 font-bold">Krishna ❤️</p>
+                </div>
+            </div>
+
+            <!-- Interactive Action Buttons -->
+            <div id="action-buttons" class="mt-7 pt-5 border-t border-pink-300/20 flex flex-col sm:flex-row items-center justify-center gap-3 relative min-h-[110px] sm:min-h-[64px]">
+                <button id="forgive-btn" onclick="acceptApology()" class="w-full sm:w-auto flex-1 py-3.5 px-6 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-semibold text-sm sm:text-base shadow-lg shadow-emerald-500/30 transform hover:scale-105 active:scale-95 transition-all cursor-pointer z-20">
+                    Maaf Kiya 💖
+                </button>
+
+                <button id="angry-btn" onclick="dodgeButton()" onmouseover="dodgeButton()" class="w-full sm:w-auto flex-1 py-3.5 px-5 rounded-2xl bg-rose-500/20 hover:bg-rose-500/30 border border-rose-400/40 text-rose-200 font-medium text-sm sm:text-base cursor-pointer z-10 select-none">
+                    Abhi Bhi Gussa Hoon 😤
+                </button>
+            </div>
+
+            <!-- STAGE 3: Hidden Celebration Message (Revealed on "Maaf Kiya") -->
+            <div id="celebration-box" class="hidden mt-6 p-5 rounded-2xl bg-gradient-to-r from-pink-500/25 to-rose-500/25 border border-pink-300/40 text-center fade-in-up">
+                <div class="text-4xl mb-2">🥳💖🥰</div>
+                <h3 class="font-romantic text-3xl text-pink-200 font-bold mb-1">
+                    Yay! Thank You Meri Jaan!
+                </h3>
+                <p class="text-sm text-pink-100 leading-relaxed">
+                    Ab jaldi se ek cute si smile de do aur ek pyaara sa reply bhej do! Love you more than anything ❤️✨
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // 1. Generate Soft Floating Hearts & Sparkles in Background
+        function createBackgroundParticles() {
+            const container = document.getElementById('particles-container');
+            const symbols = ['💖', '✨', '🌸', '💕', '💫'];
+            const particleCount = 18;
+
+            for (let i = 0; i < particleCount; i++) {
+                const el = document.createElement('div');
+                el.className = 'floating-particle';
+                el.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+                
+                // Random positioning, size, and timing
+                el.style.left = Math.random() * 100 + 'vw';
+                el.style.fontSize = (Math.random() * 14 + 12) + 'px';
+                el.style.animationDuration = (Math.random() * 8 + 8) + 's';
+                el.style.animationDelay = (Math.random() * 8) + 's';
+                
+                container.appendChild(el);
+            }
+        }
+
+        // 2. Open Envelope Transition
+        function openLetter() {
+            const envelopeStage = document.getElementById('envelope-stage');
+            const letterStage = document.getElementById('letter-stage');
+
+            envelopeStage.style.opacity = '0';
+            envelopeStage.style.transform = 'scale(0.9)';
+
+            setTimeout(() => {
+                envelopeStage.classList.add('hidden');
+                letterStage.classList.remove('hidden');
+                triggerHeartBurst(window.innerWidth / 2, window.innerHeight / 2, 15);
+            }, 300);
+        }
+
+        // 3. Playful Dodging Logic for "Abhi Bhi Gussa Hoon" Button
+        let dodgeCount = 0;
+        const funnyTexts = [
+            "Pakka? 🥺",
+            "Itna gussa? 😤",
+            "Kaju barfi kha lo, maan jao! 🍬",
+            "Please maan jao na 🙏💖",
+            "Button kharab ho gaya 😂",
+            "Sirf 'Maaf Kiya' chalega ab! 🥰"
+        ];
+
+        function dodgeButton() {
+            const angryBtn = document.getElementById('angry-btn');
+            
+            // Update text playfully
+            if (dodgeCount < funnyTexts.length) {
+                angryBtn.innerText = funnyTexts[dodgeCount];
+            } else {
+                angryBtn.innerText = funnyTexts[funnyTexts.length - 1];
+            }
+            dodgeCount++;
+
+            // Calculate safe random offset within card bounds so it stays visible on mobile
+            const maxOffsetX = 90;
+            const maxOffsetY = 45;
+            const randomX = Math.floor(Math.random() * (maxOffsetX * 2 + 1)) - maxOffsetX;
+            const randomY = Math.floor(Math.random() * (maxOffsetY * 2 + 1)) - maxOffsetY;
+
+            angryBtn.style.transform = `translate(${randomX}px, ${randomY}px) scale(${Math.max(0.75, 1 - dodgeCount * 0.04)})`;
+        }
+
+        // 4. Celebration Effect When "Maaf Kiya" is Clicked
+        function acceptApology() {
+            const actionButtons = document.getElementById('action-buttons');
+            const celebrationBox = document.getElementById('celebration-box');
+
+            // Hide buttons & reveal final sweet message
+            actionButtons.classList.add('hidden');
+            celebrationBox.classList.remove('hidden');
+
+            // Trigger multiple heart bursts across the screen
+            triggerHeartBurst(window.innerWidth * 0.3, window.innerHeight * 0.5, 25);
+            setTimeout(() => {
+                triggerHeartBurst(window.innerWidth * 0.7, window.innerHeight * 0.4, 25);
+            }, 250);
+            setTimeout(() => {
+                triggerHeartBurst(window.innerWidth * 0.5, window.innerHeight * 0.6, 30);
+            }, 500);
+        }
+
+        // Helper: Confetti / Heart Burst Animation
+        function triggerHeartBurst(originX, originY, count) {
+            const emojis = ['💖', '❤️', '🥰', '✨', '🎉', '💕'];
+            for (let i = 0; i < count; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'burst-heart';
+                heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                heart.style.left = originX + 'px';
+                heart.style.top = originY + 'px';
+
+                // Random trajectory
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = 80 + Math.random() * 180;
+                const tx = Math.cos(angle) * velocity + 'px';
+                const ty = Math.sin(angle) * velocity - 60 + 'px';
+                const rot = (Math.random() * 360 - 180) + 'deg';
+
+                heart.style.setProperty('--tx', tx);
+                heart.style.setProperty('--ty', ty);
+                heart.style.setProperty('--rot', rot);
+
+                document.body.appendChild(heart);
+
+                // Clean up DOM after animation
+                setTimeout(() => {
+                    heart.remove();
+                }, 1800);
+            }
+        }
+
+        // Initialize background particles on page load
+        window.onload = createBackgroundParticles;
+    </script>
+</body>
+</html>
